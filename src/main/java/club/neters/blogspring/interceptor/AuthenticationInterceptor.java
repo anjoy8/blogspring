@@ -60,10 +60,10 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                         //验证颁发者
                         .withIssuer(issuer)
                         // 验证scope
-                        .withArrayClaim("scope","testapi")
+                        .withArrayClaim("scope","blog.core.api")
                         .build();
                 verifier.verify(token);
-            } catch (JWTVerificationException exception){
+            } catch (Exception exception){
                 // token验证失败返回401
                 PrintWriter writer = response.getWriter();
                 writer.write(exception.getMessage());
